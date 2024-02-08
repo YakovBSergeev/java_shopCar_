@@ -23,7 +23,10 @@ class CarServiceImplTest {
         assertFalse( carTest.isEmpty() );
         carService.takeCarByMark( car.getMark() );
         assertEquals( DEFAULT_MARK, car.getMark() );
-
+        assertTrue(carTest.isEmpty());
+        carService.takeCarByMark( DEFAULT_MARK );
+        assertEquals( DEFAULT_MARK, car.getMark() );
+        assertTrue(carTest.isEmpty());
     }
 
     @Test
@@ -34,6 +37,9 @@ class CarServiceImplTest {
         assertFalse( carTest.isEmpty() );
         carService.putCar( car );
         assertEquals( DEFAULT_MARK, car.getMark() );
+        assertFalse(carTest.isEmpty());
+        assertEquals( DEFAULT_MARK, carTest.get(1).getMark() );
+        assertEquals( DEFAULT_MARK, carTest.get(0).getMark() );
 
 
     }
